@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardContent, Typography, TextField, CardActions, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@material-ui/core';
+import { Card, CardContent, Avatar, Typography, TextField, CardActions, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // import { create } from './api-user'; -- wait to integrate backend operations
@@ -29,15 +29,27 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+
 export default function Signup() {
   const classes = useStyles();
 
   // useState and event handlers
   const [values, setValues] = useState({
     name: '',
-    passowrd: '',
+    password: '',
     email: '',
   });
+
+  const [open, setOpen] = useState(false);
+
+  const handleChange = name => event => {
+    setValues({...values, [name]: event.target.value});
+  };
+
+  Signup.PropTypes = {
+    open: PropTypes.bool.isRequired,
+    handleClose: PropTypes.func.isRequired,
+  };
 
   // Frontend design
   return (
@@ -48,8 +60,40 @@ export default function Signup() {
             SIGN UP
           </Typography>
 
-        </CardContent>
+          <TextField
+            id="name"
+            label="Name"
+            className={classes.textField}
+            value={values.name}
+            onChange={handleChange('name')}
+            margin="normal"
+          />
 
+          <TextField
+            id="password"
+            label="Password"
+            className={classes.textField}
+            value={values.password}
+            onChange={handleChange('password')}
+            type="password"
+            margin="normal"
+          />  
+
+          <TextField
+            id="email"
+            label="Email"
+            className={classes.textField}
+            value={values.email}
+            onChange={handleChange('email')}
+            margin="normal"
+          />
+        </CardContent>
+        <CardActions>
+          <Button color="primary" variant="contained"
+            className={classes.submit}>
+            SUBMIT  
+          </Button>
+        </CardActions>
       </Card>
     </div>
   );
