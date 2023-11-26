@@ -14,3 +14,5 @@ const signin = async (user) => {
     console.log(err);
   };
 }
+
+export {signin};
