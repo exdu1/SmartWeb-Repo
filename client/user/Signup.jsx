@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, Avatar, Typography, TextField, CardActions, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-// import { create } from './api-user'; -- wait to integrate backend operations
+import { create } from './api-user';
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -44,6 +44,26 @@ export default function Signup() {
 
   const handleChange = name => event => {
     setValues({...values, [name]: event.target.value});
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const clickSubmit = () => {
+    const user = {
+      name: values.name || undefined,
+      email: values.email || undefined,
+      password: values.password || undefined,
+    };
+
+    create(user).then((data) => {
+      if (data.error) {
+        setValues({ ...values, erro: data.error });
+      } else {
+        setOpen(true);
+      }
+    });
   };
 
   Signup.PropTypes = {
@@ -95,6 +115,18 @@ export default function Signup() {
           </Button>
         </CardActions>
       </Card>
+
+      <Dialog open={open} onClose={handleClose}>
+        <DialogTitle>New User</DialogTitle>
+        <DialogContent>
+          <DialogContentText>New user created.</DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Link to="/Signin">
+            <Button color="primary" autofocus variant="contained" onClick={handleClose}>SIGN IN</Button>
+          </Link>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };
