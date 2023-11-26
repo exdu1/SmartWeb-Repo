@@ -13,4 +13,6 @@ const signin = async (user) => {
   } catch(err) {
     console.log(err);
   };
-}
+};
+
+export {signin};
