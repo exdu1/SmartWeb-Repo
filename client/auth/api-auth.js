@@ -6,13 +6,22 @@ const signin = async (user) => {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-
+      credentials: 'incllude',
       body: JSON.stringify(user)
     });
     return await response.json();
   } catch(err) {
     console.log(err);
   };
-}
+};
 
-export {signin};
+const signout = async () => {
+  try {
+    let response = await fetch('/auth/signout', { method: 'GET' });
+    return await response.json();
+  } catch(err) {
+    console.log(err);
+  };
+};
+
+export {signin, signout};
