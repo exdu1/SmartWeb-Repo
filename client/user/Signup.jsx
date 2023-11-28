@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Card, CardContent, Avatar, Typography, TextField, CardActions, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@material-ui/core';
+import { Card, CardContent, Typography, TextField, CardActions, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Icon } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { create } from './api-user';
@@ -32,22 +32,16 @@ const useStyles = makeStyles(theme => ({
 
 export default function Signup() {
   const classes = useStyles();
-
-  // useState and event handlers
   const [values, setValues] = useState({
     name: '',
     password: '',
     email: '',
+    open: false,
+    error: ''
   });
-
-  const [open, setOpen] = useState(false);
 
   const handleChange = name => event => {
     setValues({...values, [name]: event.target.value});
-  };
-
-  const handleClose = () => {
-    setOpen(false);
   };
 
   const clickSubmit = () => {
@@ -64,11 +58,6 @@ export default function Signup() {
         setOpen(true);
       }
     });
-  };
-
-  Signup.PropTypes = {
-    open: PropTypes.bool.isRequired,
-    handleClose: PropTypes.func.isRequired,
   };
 
   // Frontend design
@@ -90,16 +79,6 @@ export default function Signup() {
           />
 
           <TextField
-            id="password"
-            label="Password"
-            className={classes.textField}
-            value={values.password}
-            onChange={handleChange('password')}
-            type="password"
-            margin="normal"
-          />  
-
-          <TextField
             id="email"
             label="Email"
             className={classes.textField}
@@ -107,6 +86,24 @@ export default function Signup() {
             onChange={handleChange('email')}
             margin="normal"
           />
+
+          <TextField
+            id="password"
+            label="Password"
+            className={classes.textField}
+            value={values.password}
+            onChange={handleChange('password')}
+            type="password"
+            margin="normal"
+          />
+
+          {
+            values.error&& (<Typography component="p" color="error">
+              <Icon color="error" className={classes.error}>error</Icon>
+              {values.error}
+            </Typography>)
+          }  
+
         </CardContent>
         <CardActions>
           <Button color="primary" variant="contained"
@@ -116,13 +113,13 @@ export default function Signup() {
         </CardActions>
       </Card>
 
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={values.open} disableBackdropClick={true}>
         <DialogTitle>New User</DialogTitle>
         <DialogContent>
           <DialogContentText>New user created.</DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Link to="/Signin">
+          <Link to="/signin">
             <Button color="primary" autofocus variant="contained" onClick={handleClose}>SIGN IN</Button>
           </Link>
         </DialogActions>

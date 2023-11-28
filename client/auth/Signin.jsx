@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Card, CardActions, CardContent, Button, TextField, Typography, Icon} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
-// import auth from './auth-helper.js'
+import auth from './auth-helper.js'
 import {Navigate} from 'react-router-dom';
 import {useLocation} from 'react-router-dom';
 import {signin} from './api-auth.js';
