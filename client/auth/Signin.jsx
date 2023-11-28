@@ -78,8 +78,6 @@ export default function Signin(props) {
     return <Navigate to={from}/>;
   }
 
-
-  // Front-end Design
   return (
     <Card className={classes.card}>
       <Typography variant="h6" className={classes.title}>SIGN IN</Typography>

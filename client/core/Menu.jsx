@@ -7,9 +7,9 @@ import HomeIcon from '@material-ui/icons/Home'
 import Button from '@material-ui/core/Button'
 import auth from './../auth/auth-helper'
 import {Link, withRouter} from 'react-router-dom'
-// import CartIcon from '@material-ui/icons/ShoppingCart'
+import CartIcon from '@material-ui/icons/ShoppingCart'
 import Badge from '@material-ui/core/Badge'
-// import cart from './../cart/cart-helper'
+import cart from './../cart/cart-helper'
 import logo from './../assets/images/logo1.png';
 
 const isActive = (history, path) => {
