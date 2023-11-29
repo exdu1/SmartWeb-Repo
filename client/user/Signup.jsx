@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, Typography, TextField, CardActions, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Icon } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { create } from './api-user';
 
 const useStyles = makeStyles(theme => ({
@@ -106,7 +105,7 @@ export default function Signup() {
 
         </CardContent>
         <CardActions>
-          <Button color="primary" variant="contained"
+          <Button color="primary" variant="contained" onClick={clickSubmit}
             className={classes.submit}>
             SUBMIT  
           </Button>
@@ -120,7 +119,7 @@ export default function Signup() {
         </DialogContent>
         <DialogActions>
           <Link to="/signin">
-            <Button color="primary" autofocus variant="contained" onClick={handleClose}>SIGN IN</Button>
+            <Button color="primary" autofocus variant="contained">SIGN IN</Button>
           </Link>
         </DialogActions>
       </Dialog>
