@@ -19,7 +19,7 @@ server: {
     '/api': {
       target: `http://localhost:${PORT}`,
       changeOrigin: true,
-    },
+    }
   },
 },
 build: {

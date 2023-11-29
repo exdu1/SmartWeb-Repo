@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Card, CardActions, CardContent, Button, TextField, Typography, Icon} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
-// import auth from './auth-helper.js'
+import auth from './auth-helper.js'
 import {Redirect} from 'react-router-dom';
 import {useLocation} from 'react-router-dom';
 import {signin} from './api-auth.js';
@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(2)
   },
   error: {
-    verticalAligh: 'middle'
+    verticalAlign: 'middle'
   },
   title: {
     marginTop: theme.spacing(2),
@@ -67,7 +67,7 @@ export default function Signin(props) {
     setValues({ ...values, [name]: event.target.value})
   };
 
-  const {from} = location.state || {
+  const {from} = props.location.state || {
     from: {
       pathname: '/'
     }
@@ -91,7 +91,25 @@ export default function Signin(props) {
         value={values.email}
         onChange={handleChange('email')}
         margin="normal"/>
+      <br/>
+      <TextField
+        id="password"
+        type="password"
+        label="Password"
+        className={classes.textField}
+        value={values.password}
+        onChange={handleChange('password')}
+        margin="normal"/>
+      <br/> {
+        values.error && (<Typography component="p" color="error">
+          {values.error}
+        </Typography>)
+      }
+      <CardActions>
+        <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit}>Sign in</Button>
+      </CardActions>
     </Card>
+    
   )
 
 };
