@@ -5,9 +5,6 @@ import { ArrowForward, Person } from '@material-ui/icons';
 import list from 'react';
 
 export default function Users() {
-  const classes = useStyles();
-  const [users, setUsers] = useState([]);
-
   useEffect(() => {
     const abortController = new AbortController();
     const signal = abortController.signal;
@@ -24,6 +21,9 @@ export default function Users() {
       abortController.abort();
     };
   }, []);
+
+  const [users, setUsers] = useState([]);
+  const classes = useStyles();
 
   return (
     <Paper className={classes.root} elevation={4}>
