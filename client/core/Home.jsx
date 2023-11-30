@@ -5,7 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import onlineshopping3 from './../assets/images/Picture1.jpg';
-
+   
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -20,23 +20,24 @@ const useStyles = makeStyles(theme => ({
   media: {
     minHeight: 1066,
   },
-
- 
 }));
 
-export default function Home() { 
-  const classes = useStyles()
-  return (
-    <Card className={classes.card}>
-      <center>
-        <Typography variant="h3" className={classes.title}>Home Page</Typography>
-        <Typography variant="body2" component="p">Welcome to SmartWeb Application</Typography>
-      </center>
-    <CardMedia className={classes.media}
-    image={onlineshopping3} title="online shopping"/>
-    <CardContent>
-    </CardContent>
-    </Card> 
-  )
+export default function Home(){ 
+const classes = useStyles()
+return (
+<Card className={classes.card}>
+   <center>
+  <Typography variant="h3" className={classes.title}>Home Page</Typography>
+  <Typography variant="body2" component="p"> 
+Welcome to SmartWeb Application
+</Typography></center>
+<CardMedia className={classes.media}
+image={onlineshopping3} title="online shopping"/>
+<CardContent>
+
+</CardContent>
+</Card> 
+)
 }
+
 

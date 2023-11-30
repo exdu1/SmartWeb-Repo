@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import {Card, CardActions, CardContent, Button, TextField, Typography, Icon} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
-import auth from './auth-helper.js';
+import auth from './auth-helper.js'
 import {Redirect} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 import {signin} from './api-auth.js';
 
 const useStyles = makeStyles(theme => ({
@@ -14,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     paddingBottom: theme.spacing(2)
   },
   error: {
-    verticalAligh: 'middle'
+    verticalAlign: 'middle'
   },
   title: {
     marginTop: theme.spacing(2),
@@ -32,6 +33,9 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function Signin(props) {
+  const location = useLocation();
+  console.log(location.state);
+
   const classes = useStyles();
   const [values, setValues] = useState({
     email: '',
@@ -46,7 +50,7 @@ export default function Signin(props) {
       password: values.password || undefined
     };
 
- 
+    console.log(user);
     signin(user).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error});
@@ -74,24 +78,38 @@ export default function Signin(props) {
     return <Redirect to={from}/>;
   }
 
+
+  // Front-end Design
   return (
     <Card className={classes.card}>
-      <CardContent>
-        <Typography variant="h5" className={classes.title}>
-          Sign In
-        </Typography>
-        <TextField id="email" type="email" label="Email" className={classes.textField} value={values.email} onChange={handleChange('email')} margin="normal"/><br/>
-        <TextField id="password" type="password" label="Password" className={classes.textField} value={values.password} onChange={handleChange('password')} margin="normal"/><br/> 
-        {
-          values.error && (<Typography component="p" color="error">
-            <Icon color="error" className={classes.error}>error</Icon>
-            {values.error}
-          </Typography>)
-        }
-        </CardContent>
-        <CardActions>
-        <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit}>Submit</Button>
-        </CardActions>
+      <Typography variant="h6" className={classes.title}>SIGN IN</Typography>
+      <TextField 
+        id="email" 
+        type="email" 
+        label="Email" 
+        className={classes.textField}
+        value={values.email}
+        onChange={handleChange('email')}
+        margin="normal"/>
+      <br/>
+      <TextField
+        id="password"
+        type="password"
+        label="Password"
+        className={classes.textField}
+        value={values.password}
+        onChange={handleChange('password')}
+        margin="normal"/>
+      <br/> {
+        values.error && (<Typography component="p" color="error">
+          {values.error}
+        </Typography>)
+      }
+      <CardActions>
+        <Button color="primary" variant="contained" onClick={clickSubmit} className={classes.submit}>Sign in</Button>
+      </CardActions>
     </Card>
-  );
+    
+  )
+
 };

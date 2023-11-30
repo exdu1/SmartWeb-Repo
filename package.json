@@ -5,6 +5,7 @@
   "main": "index.js",
   "author": "Blessing",
   "license": "MIT",
+  "proxy": "http://localhost:5173",
   "devDependencies": {
     "@babel/core": "^7.22.5",
     "@babel/preset-env": "^7.22.5",

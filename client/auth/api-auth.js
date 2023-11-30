@@ -1,11 +1,12 @@
-const signin = async (use) => {
+const signin = async (user) => {
   try {
-    let response = await fetch('/auth/signin', {
+    let response = await fetch('api/auth/signin', {
       method: 'POST',
       headers: {
-        'Application': 'application/json',
-        'Content-Type': 'applicationjson'
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
       },
+      credentials: 'include',
       body: JSON.stringify(user)
     });
     return await response.json();
@@ -16,11 +17,11 @@ const signin = async (use) => {
 
 const signout = async () => {
   try {
-    let response = await fetch('/auth/signout/', { method: 'GET' });
+    let response = await fetch('api/auth/signout', { method: 'GET' });
     return await response.json();
   } catch(err) {
     console.log(err);
   };
 };
 
-export { signin, signout };
+export {signin, signout};

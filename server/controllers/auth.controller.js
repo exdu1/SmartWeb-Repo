@@ -19,8 +19,8 @@ return res.json({
 token, 
 user: {
 _id: user._id, 
-name: user.name,
-email: user.email 
+    name: user.name,
+    email: user.email
 }
 })
 } catch (err) {
