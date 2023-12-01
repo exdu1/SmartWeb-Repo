@@ -1,8 +1,18 @@
-import React from 'react';
-import { useState, useStyles, useEffect } from 'react';
-import {Paper, List, Link, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, Avatar, IconButton, Typography } from '@material-ui/core';
+
+import React, { useState, useEffect } from 'react';
+import { Paper, List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, Avatar, IconButton, Typography, makeStyles } from '@material-ui/core';
 import { ArrowForward, Person } from '@material-ui/icons';
-import list from 'react';
+import { Link } from 'react-router-dom'; 
+import { list } from './api-user'
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    // Add your styles here
+  },
+  title: {
+    // Add your styles here
+  },
+}));
 
 export default function Users() {
   useEffect(() => {
@@ -52,3 +62,6 @@ export default function Users() {
     </Paper>
   );
 };
+
+
+

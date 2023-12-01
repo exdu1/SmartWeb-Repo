@@ -49,7 +49,7 @@ const Menu = withRouter(({history}) => (
         <Link to="/cart">
           <Button style={isActive(history, "/cart")}>
             Cart
-            <Badge color="secondary" invisible={false} badgeContent={"e"} style={{'marginLeft': '7px'}}>
+            <Badge color="secondary" invisible={false} badgeContent={cart.itemTotal()} style={{'marginLeft': '7px'}}>
               <CartIcon />
             </Badge>
           </Button>
