@@ -27,5 +27,6 @@ build: {
   rollupOptions: {
     input: "./src/main.jsx",
   },
+  outDir: '../dist/app',
 },
 });
