@@ -14,57 +14,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// export default function Users() {
-//   useEffect(() => {
-//     const abortController = new AbortController();
-//     const signal = abortController.signal;
-
-//     list(signal).then((data) => {
-//       if (data && data.error) {
-//         console.log(data.error);
-//       } else {
-//         setUsers(data);
-//       };
-//     });
-
-//     return function cleanup() {
-//       abortController.abort();
-//     };
-//   }, []);
-
-//   const [users, setUsers] = useState([]);
-//   const classes = useStyles();
-
-//   return (
-//     <Paper className={classes.root} elevation={4}>
-//       <Typography variant="h6" className={classes.title}>All Users</Typography>
-//       <List dense>
-//         {users.map((item, i) => {
-//           return <Link to={"/user/" + item._id} key={i}>
-//                     <ListItem button>
-//                       <ListItemAvatar>
-//                         <Avatar>
-//                           <Person/>
-//                         </Avatar>
-//                       </ListItemAvatar>
-
-//                       <ListItemText primary={item.name}/>
-//                       <ListItemSecondaryAction>
-//                         <IconButton>
-//                           <ArrowForward/>
-//                         </IconButton>
-//                       </ListItemSecondaryAction>
-//                     </ListItem>
-//                  </Link>
-//             })
-//          }
-//       </List>
-//     </Paper>
-//   );
-// };
-
-
-
 export default function Users() {
   const [users, setUsers] = useState([])
 useEffect(() => {
