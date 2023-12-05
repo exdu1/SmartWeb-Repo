@@ -13,11 +13,11 @@ import path from 'path'
 const app = express()
 const CURRENT_WORKING_DIR = process.cwd()
 
-app.get('/', (req, res) => {
-  res.status(200).send(Template()) 
-})
+// app.get('/', (req, res) => {
+//   res.status(200).send(Template()) 
+// })
 
-app.use('/dist', express.static(path.join(CURRENT_WORKING_DIR, 'dist')))
+app.use(express.static(path.join(CURRENT_WORKING_DIR, 'dist/app')))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/', userRoutes)
