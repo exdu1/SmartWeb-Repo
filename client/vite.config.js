@@ -23,9 +23,10 @@ server: {
   },
 },
 build: {
-  manifest: true,
-  rollupOptions: {
-    input: "./src/main.jsx",
-  },
+  // manifest: true,
+  // rollupOptions: {
+  //   input: "./src/main.jsx",
+  // },
+  outDir: '../dist/app',
 },
 });

@@ -9,7 +9,7 @@ import auth from './../auth/auth-helper'
 import {Link, withRouter} from 'react-router-dom'
 import CartIcon from '@material-ui/icons/ShoppingCart'
 import Badge from '@material-ui/core/Badge'
-// import cart from './../cart/cart-helper'
+import cart from './../cart/cart-helper'
 import logo from './../assets/images/logo1.png';
 
 const isActive = (history, path) => {
@@ -40,13 +40,16 @@ const Menu = withRouter(({history}) => (
             <HomeIcon/>
           </IconButton>
         </Link>
+        <Link to="/users">
+          <Button style={isActive(history, "/users")}>Users</Button>
+      </Link>
         <Link to="/shops/all">
           <Button style={isActive(history, "/shops/all")}>All Shops</Button>
         </Link>
         <Link to="/cart">
           <Button style={isActive(history, "/cart")}>
             Cart
-            <Badge color="secondary" invisible={false} badgeContent={"e"} style={{'marginLeft': '7px'}}>
+            <Badge color="secondary" invisible={false} badgeContent={cart.itemTotal()} style={{'marginLeft': '7px'}}>
               <CartIcon />
             </Badge>
           </Button>
