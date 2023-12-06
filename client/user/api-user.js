@@ -44,7 +44,7 @@ const read = async (params, credentials, signal) => {
 
 const update = async (params, credentials, user) => {
   try {
-    let response = await fetch('/api/users' + params.userId, {
+    let response = await fetch('/api/users/' + params.userId, {
       method:'PUT',
       headers: {
         'Accept': 'application/json',
@@ -75,5 +75,24 @@ const remove = async (params, credentials) => {
   };
 };
 
+const stripeUpdate = async (params, credentials, auth_code, signal) => {
+  try {
+    let response = await fetch ('/api/stripe_auth/'+params.userId, {
+      method: 'PUT',
+      signal: signal,
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + credentials.t
+      },
+      body: JSON.stringify({stripe: auth_code})
+    });
+    return await response.json();
+  } catch(err) {
+    console.log(err);
+  };
+};
 
-export {create, list, read, update, remove};
+
+
+export {create, list, read, update, remove, stripeUpdate};
