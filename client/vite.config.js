@@ -19,13 +19,14 @@ server: {
     '/api': {
       target: `http://localhost:${PORT}`,
       changeOrigin: true,
-    },
+    }
   },
 },
 build: {
-  manifest: true,
-  rollupOptions: {
-    input: "./src/main.jsx",
-  },
+  // manifest: true,
+  // rollupOptions: {
+  //   input: "./src/main.jsx",
+  // },
+  outDir: '../dist/app',
 },
 });
