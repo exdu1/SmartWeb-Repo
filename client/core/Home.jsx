@@ -30,6 +30,12 @@ return (
   <Typography variant="h3" className={classes.title}>Home Page</Typography>
   <Typography variant="body2" component="p"> 
 Welcome to SmartWeb Application
+     <br />
+<br />
+SmartWeb is Smart Web is a online marketplace designed to connect skilled freelancers  <br /> 
+offering a range of internet services with individuals and businesses seeking expert solutions. <br />
+<br />Whether you're a web developer, digital marketer, graphic designer, or SEO specialist, <br />
+Smart Web provides a platform to showcase your talents and find meaningful projects.
 </Typography></center>
 <CardMedia className={classes.media}
 image={onlineshopping3} title="online shopping"/>
